@@ -5,17 +5,14 @@ int arr[9][9];
 
 bool issafe(int arr[][9], int i,int j, int val)
 {
-    // Row
     for(int k=0;k<9;k++)
         if(arr[i][k]==val && k!=j)
             return false;
 
-    // Column
     for(int k=0;k<9;k++)
         if(arr[k][j]==val && k!=i)
             return false;
 
-    // BLOCK 3*3
     int x=(i/3)*3;
     int y=(j/3)*3;
     for(int l=x;l<x+3;l++)
@@ -65,7 +62,7 @@ bool solve(int arr[][9])
                     if(issafe(arr,i,j,k) && solve(arr))
                         return true;
                     else
-                        arr[i][j]=0;// backtrack
+                        arr[i][j]=0;
                 }
                 return false;
             }
@@ -76,7 +73,6 @@ bool solve(int arr[][9])
 
 int main()
 {
-    // INPUT 0 for empty cell
     cout<<"Enter grid[9*9]:\n";
     for(int i=0;i<9;i++)
         for(int j=0;j<9;j++)
